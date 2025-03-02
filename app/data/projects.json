@@ -1,14 +1,44 @@
 [
   {
     "name": "Kollektif",
-    "description": "A collaborative design platform for creative teams",
-    "video": "https://res.cloudinary.com/your-account/video/upload/v1/your-video.mp4",
-    "link": "https://kollektif.design"
+    "description": "Bespoke branding and web experience for a Copenhagen-based talent agency",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/kollektif-showcase.mp4",
+    "link": "/projects/kollektif",
+    "slug": "kollektif"
   },
   {
-    "name": "DesignSystem.io",
-    "description": "Open-source design system for product teams",
-    "video": "https://res.cloudinary.com/your-account/video/upload/v1/your-video-2.mp4",
-    "link": "https://designsystem.io"
+    "name": "Glass",
+    "description": "AI-powered SaaS fighting counterfeit products for global brands",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/glass-demo.mp4",
+    "link": "/projects/glass",
+    "slug": "glass"
+  },
+  {
+    "name": "JMT Checkouts",
+    "description": "Checkout UX overhaul doubling conversion rates for group travel bookings",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/jmt-checkout.mp4",
+    "link": "/projects/jmt-checkouts",
+    "slug": "jmt-checkouts"
+  },
+  {
+    "name": "JMT Prime",
+    "description": "No-code luxury travel platform achieving 35% sold-out premium trips in 1 month",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/jmt-prime-showcase.mp4",
+    "link": "/projects/jmt-prime",
+    "slug": "jmt-prime"
+  },
+  {
+    "name": "Joynt",
+    "description": "Chat-first micro-creator platform leading to SOSV investment",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/joynt-case-study.mp4",
+    "link": "/projects/joynt",
+    "slug": "joynt"
+  },
+  {
+    "name": "Cambium",
+    "description": "Sustainable wooden watch brand blending horology with eco-storytelling",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/cambium-showreel.mp4",
+    "link": "/projects/cambium",
+    "slug": "cambium"
   }
-] 
+]

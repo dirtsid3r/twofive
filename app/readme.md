@@ -58,7 +58,28 @@ Add new blog posts in the `app/blog/posts` directory as MDX files with frontmatt
 
 ### Projects
 
-Update projects in `app/data/projects.json`.
+Projects can be managed in two ways:
+
+1. Basic project information in `app/data/projects.json`
+2. Detailed project pages as MDX files in `app/projects/posts/`
+
+Each project MDX file should include frontmatter:
+
+```
+---
+title: "Project Title"
+description: "Brief description of the project"
+date: "Year or specific date"
+image: "/images/projects/project-name/cover.jpg"
+technologies: ["Tech1", "Tech2", "Tech3"]
+github: "https://github.com/yourusername/project"
+website: "https://project-website.com"
+---
+
+Project content in Markdown...
+```
+
+Project images should be stored in `public/images/projects/project-name/`.
 
 ### Work Experience
 

@@ -1,0 +1,53 @@
+---
+title: "JMT Prime"
+description: "No-code luxury travel platform validating premium market demand with 35% sold-out trips"
+date: "2022-2023"
+image: "/images/projects/jmt-prime/cover.jpg"
+technologies: ["Webflow", "Airtable", "Zapier", "Stripe"]
+website: "https://prime.joinmytrip.com"
+---
+
+## Project Overview
+
+High-net-worth travelers wanted curated experiences beyond JMT’s backpacker roots. We proved premium demand in 4 weeks with $0 engineering spend.
+
+---
+
+## Strategy & Execution
+
+### No-Code Stack
+- **Frontend:** Webflow + Memberstack for auth/payments  
+- **Backend:** Airtable CMS + Zapier automations  
+- **Media Pipeline:** User-generated content via Instagram API  
+
+### Luxury Playbook
+- **Influencer Collabs:** Partnered with 50+ micro-celebrities (100k-1M followers)  
+- **Pricing Psychology:** Tested "all-inclusive" vs à la carte models (33% conversion lift)  
+- **FOMO Engine:** "Group forming" alerts for sold-out adjacent dates  
+
+---
+
+## Challenges & Solutions
+
+**Problem:** Users hesitated to pay 5x premium without physical touchpoints.  
+**Solution:**  
+- Launched "Host Dinner" – video call with trip leader pre-booking  
+- Added 24hr concierge WhatsApp support  
+
+---
+
+## Results
+- 💸 **£180k ARR** within 6 months  
+- 🎫 11/31 luxury trips sold out in 30 days  
+- 📈 19% repeat booking rate (vs 4% core product)  
+
+---
+
+## Retrospective
+**What I’d Change:**  
+- Built NFT-based loyalty program for exclusivity  
+- Added helicopter/yacht booking integrations earlier  
+
+---
+
+<center>✈️ [Explore JMT Prime](https://prime.joinmytrip.com){: target="_blank"}</center>
