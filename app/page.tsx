@@ -141,7 +141,7 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            I design digital products that help people achieve their goals. With over 5 years of experience, I specialize in creating intuitive interfaces and design systems that scale.
+          A decade of shipping products for 10M+ users. Dropped out of my Bachelor's to be an early team member at Lookup (outpaced Facebook to 10M+ users), designed Joynt’s 100M-message platform, and co-led checkout flows that doubled conversions. Now blending my hustle with a University of Brighton UX Design Master’s (yes, they let me in for my work) to craft ethical, user-first products for Earth's innovators.
           </p>
         </div>
       </motion.section>
