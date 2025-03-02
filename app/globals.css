@@ -19,3 +19,110 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+/* Add this at the end of your globals.css file */
+#__next-build-watcher,
+#__next-error-overlay,
+.nextjs-toast-errors-parent {
+  display: none !important;
+}
+
+:root {
+  --color-primary: #0ea5e9;
+  --color-secondary: #e0f2fe;
+  --color-overlay: rgba(14, 165, 233, 0.15);
+}
+
+.creative-theme {
+  /* Base styles for creative theme */
+  background-color: white;
+  color: #333;
+}
+
+/* Ensure images and videos aren't affected by the overlay */
+.creative-theme img,
+.creative-theme video {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure interactive elements are above the overlay */
+.creative-theme button,
+.creative-theme a,
+.creative-theme input,
+.creative-theme select,
+.creative-theme textarea {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure content is above the overlay */
+.creative-theme main,
+.creative-theme header,
+.creative-theme footer {
+  position: relative;
+  z-index: 2;
+}
+
+.creative-theme a {
+  color: var(--color-primary);
+}
+
+.creative-theme h1, 
+.creative-theme h2, 
+.creative-theme h3, 
+.creative-theme h4, 
+.creative-theme h5, 
+.creative-theme h6 {
+  color: var(--color-primary);
+}
+
+.creative-theme button {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Add this to your globals.css file */
+.markdown-content h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.markdown-content h2 {
+  @apply text-2xl font-bold mb-3 mt-6;
+}
+
+.markdown-content h3 {
+  @apply text-xl font-bold mb-2 mt-5;
+}
+
+.markdown-content p {
+  @apply mb-4;
+}
+
+.markdown-content ul {
+  @apply list-disc pl-5 mb-4;
+}
+
+.markdown-content ol {
+  @apply list-decimal pl-5 mb-4;
+}
+
+.markdown-content li {
+  @apply mb-1;
+}
+
+.markdown-content a {
+  @apply text-blue-500 hover:underline;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic my-4;
+}
+
+.markdown-content code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded;
+}
+
+.markdown-content pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+}

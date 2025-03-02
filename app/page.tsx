@@ -19,6 +19,9 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
+import CustomVideo from '@/components/ui/custom-video'
+import dynamic from 'next/dynamic'
+import ClientOnlyVideo from '@/components/ui/client-only-video'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -43,6 +46,10 @@ type ProjectVideoProps = {
   src: string
 }
 
+const VideoCardNoSSR = dynamic(() => import('@/components/ui/video-card'), {
+  ssr: false,
+})
+
 function ProjectVideo({ src }: ProjectVideoProps) {
   return (
     <MorphingDialog
@@ -51,25 +58,18 @@ function ProjectVideo({ src }: ProjectVideoProps) {
         bounce: 0,
         duration: 0.3,
       }}
+      suppressHydrationWarning
     >
       <MorphingDialogTrigger>
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
-        />
+        <div className="aspect-video w-full cursor-zoom-in rounded-xl">
+          <ClientOnlyVideo src={src} />
+        </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
-            src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-          />
+          <div className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]">
+            <ClientOnlyVideo src={src} />
+          </div>
         </MorphingDialogContent>
         <MorphingDialogClose
           className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
@@ -124,12 +124,16 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  console.log('Projects:', PROJECTS);
+  console.log('Work Experience:', WORK_EXPERIENCE);
+
   return (
     <motion.main
       className="space-y-24"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
+      suppressHydrationWarning
     >
       <motion.section
         variants={VARIANTS_SECTION}
@@ -137,8 +141,7 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            I design digital products that help people achieve their goals. With over 5 years of experience, I specialize in creating intuitive interfaces and design systems that scale.
           </p>
         </div>
       </motion.section>

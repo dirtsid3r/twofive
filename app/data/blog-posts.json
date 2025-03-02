@@ -1,0 +1,20 @@
+[
+  {
+    "uid": "1",
+    "title": "Designing for Scale: Lessons Learned",
+    "description": "How to create design systems that scale with your product",
+    "link": "/blog/designing-for-scale"
+  },
+  {
+    "uid": "2",
+    "title": "The Future of Digital Product Design",
+    "description": "Trends and predictions for the next decade of design",
+    "link": "/blog/future-of-design"
+  },
+  {
+    "uid": "3",
+    "title": "Collaboration Between Designers and Developers",
+    "description": "Building better products through effective teamwork",
+    "link": "/blog/designer-developer-collaboration"
+  }
+] 

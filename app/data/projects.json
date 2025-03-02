@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Kollektif",
+    "description": "A collaborative design platform for creative teams",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/your-video.mp4",
+    "link": "https://kollektif.design"
+  },
+  {
+    "name": "DesignSystem.io",
+    "description": "Open-source design system for product teams",
+    "video": "https://res.cloudinary.com/your-account/video/upload/v1/your-video-2.mp4",
+    "link": "https://designsystem.io"
+  }
+] 
