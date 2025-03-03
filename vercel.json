@@ -1,5 +1,9 @@
 {
-  "buildCommand": "NEXT_DISABLE_ESLINT=1 next build",
-  "installCommand": "npm install --no-optional",
-  "framework": "nextjs"
-} 
+    "buildCommand": "npm run build",
+    "installCommand": "npm install --no-optional",
+    "framework": "nextjs",
+    "nodeVersion": "18.x",
+    "env": {
+      "NEXT_DISABLE_ESLINT": "1"
+    }
+  }
