@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Render the blog post
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default function BlogPost({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'app/blog/posts', `${slug}.mdx`);
   
