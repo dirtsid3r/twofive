@@ -8,6 +8,24 @@ import ErrorBoundary from '@/components/ui/error-boundary'
 import { DisableErrorOverlay } from './disable-error-overlay'
 import { HideErrorOverlay } from '@/components/ui/hide-error-overlay'
 
+// Define fallback values in case the import fails
+const AUTHOR_NAME = 'Vishnu V';
+const AUTHOR_TITLE = 'Digital Product Designer';
+
+// Try to import from data.ts, but use fallbacks if it fails
+let authorName = AUTHOR_NAME;
+let authorTitle = AUTHOR_TITLE;
+
+try {
+  // Dynamic import to avoid issues with SSR
+  const { AUTHOR } = require('./data');
+  if (AUTHOR && AUTHOR.name) authorName = AUTHOR.name;
+  if (AUTHOR && AUTHOR.title) authorTitle = AUTHOR.title;
+} catch (e) {
+  console.error('Error importing AUTHOR from data.ts:', e);
+  // Use fallback values defined above
+}
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -15,8 +33,8 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Desktop of V',
-  description: 'Digital Product Designer ✨ Scaling ideas into products used by millions',
+  title: 'Vishnu',
+  description: 'Digital Product Designer - Personal Website',
 }
 
 const geist = Geist({

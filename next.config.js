@@ -12,6 +12,10 @@ const nextConfig = {
     }
   } : {}),
   // Add any other necessary configurations
+  images: {
+    domains: ['your-domain.com'], // If using external images
+    unoptimized: true, // Try this if optimization is causing issues
+  },
 };
 
 module.exports = nextConfig; 

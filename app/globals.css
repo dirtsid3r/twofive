@@ -132,3 +132,137 @@ div.absolute.right-4.top-24,
 button[aria-label="Copy"] {
   display: none !important;
 }
+
+/* Media container styles for blog posts and projects */
+.media-container {
+  width: 100%;
+  background-color: transparent; /* Remove background */
+  border-radius: 0.75rem;
+  padding: 0; /* Remove padding */
+  margin: 1rem 0;
+  position: relative;
+}
+
+.dark .media-container {
+  background-color: transparent; /* Remove background in dark mode */
+}
+
+.media-container::before {
+  content: none; /* Remove border */
+}
+
+.dark .media-container::before {
+  content: none; /* Remove border in dark mode */
+}
+
+.media-content {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Keep shadow on the image */
+}
+
+/* Keep caption styling */
+.media-caption {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  color: #6b7280;
+  padding: 0;
+}
+
+.dark .media-caption {
+  color: #9ca3af;
+}
+
+/* Typography for inner pages (projects, blog, about) */
+.inner-page h1 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  color: #18181b; /* zinc-900 */
+}
+
+.dark .inner-page h1 {
+  color: #fafafa; /* zinc-50 */
+}
+
+.inner-page h2 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #18181b; /* zinc-900 */
+}
+
+.dark .inner-page h2 {
+  color: #fafafa; /* zinc-50 */
+}
+
+.inner-page h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #18181b; /* zinc-900 */
+}
+
+.dark .inner-page h3 {
+  color: #fafafa; /* zinc-50 */
+}
+
+.inner-page p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #52525b; /* zinc-600 */
+}
+
+.dark .inner-page p {
+  color: #a1a1aa; /* zinc-400 */
+}
+
+.inner-page a {
+  color: #18181b; /* zinc-900 */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.dark .inner-page a {
+  color: #e4e4e7; /* zinc-200 */
+}
+
+.inner-page ul, .inner-page ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inner-page li {
+  margin-bottom: 0.5rem;
+  color: #52525b; /* zinc-600 */
+}
+
+.dark .inner-page li {
+  color: #a1a1aa; /* zinc-400 */
+}
+
+.inner-page img {
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.inner-page blockquote {
+  border-left: 2px solid #e4e4e7; /* zinc-200 */
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: #71717a; /* zinc-500 */
+}
+
+.dark .inner-page blockquote {
+  border-left-color: #3f3f46; /* zinc-700 */
+  color: #a1a1aa; /* zinc-400 */
+}

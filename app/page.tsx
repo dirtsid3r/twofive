@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
+import { XIcon, MessageCircleIcon, BookOpenIcon, ArchiveIcon, UserIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
@@ -22,6 +22,11 @@ import {
 import CustomVideo from '@/components/ui/custom-video'
 import dynamic from 'next/dynamic'
 import ClientOnlyVideo from '@/components/ui/client-only-video'
+import Image from 'next/image'
+import { VideoCard } from '@/components/ui/video-card'
+import { ArrowRightIcon } from 'lucide-react'
+import { projectImages } from './project-images'
+import { Button } from '@/components/ui/button'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -52,75 +57,88 @@ const VideoCardNoSSR = dynamic(() => import('@/components/ui/video-card'), {
 
 function ProjectVideo({ src }: ProjectVideoProps) {
   return (
-    <MorphingDialog
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.3,
-      }}
-      suppressHydrationWarning
-    >
-      <MorphingDialogTrigger>
-        <div className="aspect-video w-full cursor-zoom-in rounded-xl">
-          <ClientOnlyVideo src={src} />
-        </div>
-      </MorphingDialogTrigger>
-      <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <div className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]">
-            <ClientOnlyVideo src={src} />
-          </div>
-        </MorphingDialogContent>
-        <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
-          variants={{
-            initial: { opacity: 0 },
-            animate: {
-              opacity: 1,
-              transition: { delay: 0.3, duration: 0.1 },
-            },
-            exit: { opacity: 0, transition: { duration: 0 } },
-          }}
-        >
-          <XIcon className="h-5 w-5 text-zinc-500" />
-        </MorphingDialogClose>
-      </MorphingDialogContainer>
-    </MorphingDialog>
+    <div className="aspect-video w-full rounded-xl">
+      <ClientOnlyVideo src={src} />
+    </div>
   )
 }
 
 function MagneticSocialLink({
   children,
   link,
+  icon,
+  primary = false,
 }: {
   children: React.ReactNode
   link: string
+  icon?: React.ReactNode
+  primary?: boolean
 }) {
   return (
-    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+    <Magnetic>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className={`flex h-10 items-center justify-center rounded-full px-4 text-sm gap-2 ${
+          primary 
+            ? 'bg-black text-white dark:bg-white dark:text-black' 
+            : 'border border-zinc-200 dark:border-zinc-800'
+        }`}
       >
+        {icon}
         {children}
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 15 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
-        >
-          <path
-            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-            fill="currentColor"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
-        </svg>
       </a>
     </Magnetic>
   )
+}
+
+function ProjectCard({ name, description, link, index }: { 
+  name: string;
+  description: string;
+  link: string;
+  index: number;
+}) {
+  // Hardcoded image paths
+  const imagePaths = [
+    '/images/kollektif.jpg',
+    '/images/glass.jpg',
+    '/images/jmt-checkouts.jpg',
+    '/images/jmt-prime.jpg',
+    '/images/joynt.jpg',
+    '/images/cambium.jpg',
+  ];
+  
+  const imagePath = imagePaths[index] || '/images/placeholder.jpg';
+  
+  return (
+    <div className="space-y-2">
+      {/* Restore the original styling for the image container */}
+      <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+        <div className="aspect-video w-full rounded-xl overflow-hidden">
+          <img 
+            src={imagePath} 
+            alt={name}
+            className="object-cover w-full h-full"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      
+      {/* Restore the original styling for the text with hover animation */}
+      <div className="px-1">
+        <a
+          className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
+          href={link}
+          target="_blank"
+        >
+          {name}
+          <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-100"></span>
+        </a>
+        <p className="text-base text-zinc-600 dark:text-zinc-400">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default function Personal() {
@@ -129,7 +147,7 @@ export default function Personal() {
 
   return (
     <motion.main
-      className="space-y-24"
+      className="space-y-0"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
@@ -138,36 +156,99 @@ export default function Personal() {
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="py-16"
       >
         <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-          A decade of shipping products for 10M+ users. Dropped out of my Bachelor's to be an early team member at Lookup (outpaced Facebook to 10M+ users), designed Joynt’s 100M-message platform, and co-led checkout flows that doubled conversions. Now blending my hustle with a University of Brighton UX Design Master’s (yes, they let me in for my work) to craft ethical, user-first products for Earth's innovators.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6"
+          >
+            A decade of shipping products for 10M+ users. Dropped out of my Bachelor's to be an early team member at Lookup (outpaced Facebook to 10M+ users), designed Joynt's 100M-message platform, and co-led checkout flows that doubled conversions. Now blending my hustle with a University of Brighton UX Design Master's (yes, they let me in for my work) to craft ethical, user-first products for Earth's innovators.
+          </motion.p>
+          
+          {/* Navigation links with icons - Chat as primary CTA */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.0, duration: 0.5 }}
+            className="flex items-center space-x-3 mt-4"
+          >
+            <Button 
+              href="/chat"
+              variant="primary"
+              icon={<MessageCircleIcon size={16} />}
+            >
+              Chat
+            </Button>
+            
+            <Button 
+              href="/about"
+              icon={<UserIcon size={16} />}
+            >
+              About
+            </Button>
+            
+            <Button 
+              href="#blog-section"
+              icon={<BookOpenIcon size={16} />}
+            >
+              Notes
+            </Button>
+            
+            <Button 
+              href="/archive"
+              icon={<ArchiveIcon size={16} />}
+            >
+              Archive
+            </Button>
+          </motion.div>
         </div>
       </motion.section>
 
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="pt-8 pb-16"
       >
         <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
-              </div>
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          {PROJECTS.map((project, index) => (
+            <ProjectCard 
+              key={index}
+              name={project.name}
+              description={project.description}
+              link={project.link}
+              index={index}
+            />
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+        className="pt-8 pb-16"
+      >
+        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+        <div className="space-y-4">
+          {WORK_EXPERIENCE.map((work) => (
+            <div
+              key={work.id}
+              className="rounded-2xl border border-zinc-100 p-4 dark:border-zinc-800"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="font-medium text-zinc-900 dark:text-zinc-50">
+                    {work.title}
+                  </h4>
+                  <p className="text-zinc-600 dark:text-zinc-400">
+                    {work.company}
+                  </p>
+                </div>
+                <p className="text-sm text-zinc-500 dark:text-zinc-500">
+                  {work.start} - {work.end}
                 </p>
               </div>
             </div>
@@ -176,46 +257,10 @@ export default function Personal() {
       </motion.section>
 
       <motion.section
+        id="blog-section"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-        <div className="flex flex-col space-y-2">
-          {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={job.id}
-            >
-              <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
-                    </p>
-                  </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+        className="pt-8 pb-16"
       >
         <h3 className="mb-3 text-lg font-medium">Blog</h3>
         <div className="flex flex-col space-y-0">
@@ -252,20 +297,31 @@ export default function Personal() {
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="pt-8 pb-16"
       >
         <h3 className="mb-5 text-lg font-medium">Connect</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           Feel free to contact me at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
+          <a className="underline dark:text-zinc-300" href="mailto:hello@vishnuv.design">
+            hello@vishnuv.design
           </a>
         </p>
         <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
+          <MagneticSocialLink link="https://dribbble.com/vishnuv">
+            Dribbble
+          </MagneticSocialLink>
+          
+          <MagneticSocialLink link="https://linkedin.com/in/vishnuv">
+            LinkedIn
+          </MagneticSocialLink>
+          
+          <MagneticSocialLink link="https://twitter.com/vishnuv_">
+            Twitter
+          </MagneticSocialLink>
+          
+          <MagneticSocialLink link="https://github.com/vishnuv">
+            GitHub
+          </MagneticSocialLink>
         </div>
       </motion.section>
     </motion.main>

@@ -36,8 +36,8 @@ const COLOR_THEMES = [
 ]
 
 function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const [showColorPicker, setShowColorPicker] = useState(false)
   const [selectedColor, setSelectedColor] = useState(COLOR_THEMES[0])
   const pathname = usePathname()
@@ -45,28 +45,9 @@ function ThemeSwitch() {
   // Check if we're on a blog post page
   const isBlogPost = pathname.startsWith('/blog/') && pathname !== '/blog'
 
-  // Set default theme to light
   useEffect(() => {
-    if (!mounted) {
-      setTheme('light')
-    }
     setMounted(true)
-  }, [setTheme, mounted])
-
-  // Clean up creative theme when switching to light/dark
-  useEffect(() => {
-    if (theme === 'light' || theme === 'dark') {
-      // Remove creative theme class and reset variables
-      document.documentElement.classList.remove('creative-theme')
-      document.documentElement.style.removeProperty('--color-overlay');
-      
-      // Remove any overlay element
-      const overlay = document.getElementById('creative-theme-overlay');
-      if (overlay) {
-        overlay.remove();
-      }
-    }
-  }, [theme]);
+  }, [])
 
   if (!mounted) {
     return null
@@ -135,80 +116,46 @@ function ThemeSwitch() {
   }
 
   return (
-    <div className="relative z-10">
-      <AnimatedBackground
-        className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
-        defaultValue={theme}
-        transition={{
-          type: 'spring',
-          bounce: 0,
-          duration: 0.2,
-        }}
-        enableHover={false}
-        onValueChange={(id) => {
-          handleThemeChange(id as string)
-        }}
-      >
-        {THEMES_OPTIONS.map((themeOption) => {
-          return (
-            <button
-              key={themeOption.id}
-              className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
-              type="button"
-              aria-label={`Switch to ${themeOption.label} theme`}
-              data-id={themeOption.id}
-            >
-              {themeOption.icon}
-            </button>
-          )
-        })}
-      </AnimatedBackground>
-
-      {/* Color picker for Creative theme */}
-      {showColorPicker && (
-        <div className="absolute right-0 top-10 z-50 mt-2 w-48 rounded-md bg-white p-2 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-zinc-800">
-          <div className="py-1 text-sm text-zinc-700 dark:text-zinc-300">
-            <p className="mb-2 px-2 font-medium">Choose a color theme:</p>
-            {COLOR_THEMES.map((colorTheme) => (
-              <button
-                key={colorTheme.name}
-                className="flex w-full items-center px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-700"
-                onClick={() => applyCreativeTheme(colorTheme)}
-              >
-                <div 
-                  className="mr-2 h-4 w-4 rounded-full" 
-                  style={{ backgroundColor: colorTheme.primary }}
-                />
-                {colorTheme.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+    <div className="flex items-center gap-1 rounded-full border border-zinc-200 p-1 dark:border-zinc-800">
+      {THEMES_OPTIONS.map((option) => (
+        <button
+          key={option.id}
+          className={`flex h-6 w-6 items-center justify-center rounded-full ${
+            theme === option.id
+              ? 'bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50'
+              : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50'
+          }`}
+          onClick={() => handleThemeChange(option.id)}
+        >
+          {option.icon}
+        </button>
+      ))}
     </div>
   )
 }
 
 export function Header() {
   const pathname = usePathname()
-  
-  // Check if we're on a blog post page
-  const isBlogPost = pathname.startsWith('/blog/') && pathname !== '/blog'
-  
+  const isHome = pathname === '/'
+
   return (
-    <header className="mb-8 flex items-center justify-between relative z-10">
-      <div>
-        <Link href="/" className="font-medium text-black dark:text-white">
-          Your Name
-        </Link>
+    <header className="flex items-center justify-between">
+      <div className="flex flex-col">
+        <TextEffect
+          as="h1"
+          className="text-xl font-bold tracking-tight"
+          per="char"
+          delay={0.3}
+        >
+          Vishnu
+        </TextEffect>
         <TextEffect
           as="p"
-          preset="fade"
           per="char"
           className="text-zinc-600 dark:text-zinc-500"
           delay={0.5}
         >
-          Your Title/Role
+          Digital Product Designer
         </TextEffect>
       </div>
       {/* Theme switcher */}

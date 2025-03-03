@@ -29,21 +29,46 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Motion Primitives Pro',
-    description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
-    id: 'project1',
+    name: 'Kollektif',
+    description: 'Bespoke branding and web experience for a Copenhagen-based talent agency',
+    link: '/projects/kollektif',
+    video: '', // We're not using videos anymore
+    id: 'kollektif', // This should match your image filename (without extension)
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
-    id: 'project2',
+    name: 'Glass',
+    description: 'AI-powered SaaS fighting counterfeit products for global brands',
+    link: '/projects/glass',
+    video: '',
+    id: 'glass',
+  },
+  {
+    name: 'JMT Checkouts',
+    description: 'Checkout UX overhaul doubling conversion rates for group travel bookings',
+    link: '/projects/jmt-checkouts',
+    video: '',
+    id: 'jmt-checkouts',
+  },
+  {
+    name: 'JMT Prime',
+    description: 'No-code luxury travel platform achieving 35% sold-out premium trips in 1 month',
+    link: '/projects/jmt-prime',
+    video: '',
+    id: 'jmt-prime',
+  },
+  {
+    name: 'Joynt',
+    description: 'Chat-first micro-creator platform leading to SOSV investment',
+    link: '/projects/joynt',
+    video: '',
+    id: 'joynt',
+  },
+  {
+    name: 'Cambium',
+    description: 'Sustainable wooden watch brand blending horology with eco-storytelling',
+    link: '/projects/cambium',
+    video: '',
+    id: 'cambium',
   },
 ]
 
@@ -117,3 +142,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ]
 
 export const EMAIL = 'your@email.com'
+
+export const AUTHOR = {
+  name: 'Vishnu',
+  title: 'Digital Product Designer',
+}

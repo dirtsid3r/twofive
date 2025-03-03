@@ -5,6 +5,8 @@ import matter from 'gray-matter';
 import { Metadata } from 'next';
 import { markdownToHtml } from '@/lib/markdown';
 import ProjectContent from './project-content';
+import { Button } from '@/components/ui/button'
+import { ArrowLeftIcon, ExternalLinkIcon } from 'lucide-react'
 
 // Get all project posts for static paths
 export async function generateStaticParams() {
@@ -58,7 +60,30 @@ export default async function ProjectPage({ params }: { params: { slug: string }
     // Convert markdown to HTML
     const contentHtml = await markdownToHtml(content);
     
-    return <ProjectContent data={data} contentHtml={contentHtml} />;
+    return (
+      <>
+        <ProjectContent data={data} contentHtml={contentHtml} />
+        <div className="flex items-center space-x-4 mt-8">
+          <Button 
+            href="/"
+            variant="link"
+            icon={<ArrowLeftIcon size={16} />}
+          >
+            Back to home
+          </Button>
+          
+          <Button 
+            href={data.liveUrl}
+            variant="primary"
+            icon={<ExternalLinkIcon size={16} />}
+            iconPosition="right"
+            target="_blank"
+          >
+            View Live
+          </Button>
+        </div>
+      </>
+    );
   } catch (error) {
     console.error(`Error rendering project for ${slug}:`, error);
     notFound();

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeftIcon, LinkIcon, CalendarIcon, GithubIcon } from 'lucide-react';
 import Image from 'next/image';
+import { MediaContainer } from '@/app/components/ui/media-container';
 
 interface ProjectContentProps {
   data: {
@@ -26,6 +27,21 @@ export default function ProjectContent({ data, contentHtml }: ProjectContentProp
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  
+  // Process the HTML to replace img tags with MediaContainer
+  const processedHtml = contentHtml.replace(
+    /<img\s+src="([^"]+)"\s+alt="([^"]*)"\s+title="([^"]*)"\s*\/?>/g,
+    (match, src, alt, title) => {
+      return `<div>
+        <div class="media-container">
+          <div class="relative w-full aspect-video">
+            <img src="${src}" alt="${alt}" class="media-content object-cover" />
+          </div>
+        </div>
+        ${title ? `<p class="media-caption">${title}</p>` : ''}
+      </div>`;
+    }
+  );
   
   // Add a check for empty content
   if (!data || !contentHtml) {
@@ -74,7 +90,7 @@ export default function ProjectContent({ data, contentHtml }: ProjectContentProp
             alt={data.title}
             width={1200}
             height={630}
-            className="w-full object-cover"
+            className="w-full object-cover rounded-lg"
           />
         </div>
       )}
@@ -134,7 +150,7 @@ export default function ProjectContent({ data, contentHtml }: ProjectContentProp
       
       <div 
         className="markdown-content pt-8"
-        dangerouslySetInnerHTML={{ __html: contentHtml }} 
+        dangerouslySetInnerHTML={{ __html: processedHtml }} 
       />
     </article>
   );
