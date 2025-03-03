@@ -6,7 +6,7 @@ import { ArrowLeftIcon, LinkIcon, CalendarIcon, GithubIcon } from 'lucide-react'
 import Image from 'next/image';
 import { MediaContainer } from '@/app/components/ui/media-container';
 
-interface ProjectContentProps {
+export interface ProjectContentProps {
   data: {
     title: string;
     description: string;
@@ -15,6 +15,7 @@ interface ProjectContentProps {
     technologies?: string[];
     github?: string;
     website?: string;
+    liveUrl?: string;
   };
   contentHtml: string;
 }

@@ -35,6 +35,7 @@ export interface ButtonProps
   magnetic?: boolean
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
+  target?: string
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -65,6 +66,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           <a
             href={href}
             className={cn(buttonVariants({ variant, size }), className)}
+            target={props.target}
           >
             {content}
           </a>
@@ -73,6 +75,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         <a
           href={href}
           className={cn(buttonVariants({ variant, size }), className)}
+          target={props.target}
         >
           {content}
         </a>

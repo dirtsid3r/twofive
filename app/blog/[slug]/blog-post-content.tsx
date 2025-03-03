@@ -4,11 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ClockIcon, ArrowLeftIcon, LinkIcon } from 'lucide-react';
 
-interface BlogPostContentProps {
+export interface BlogPostContentProps {
   data: {
     title: string;
     description: string;
     date: string;
+    // Add any other required fields
   };
   contentHtml: string;
 }
