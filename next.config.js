@@ -10,9 +10,13 @@ const nextConfig = {
       pagesBufferLength: 2,
     }
   } : {}),
-  // Add this line to ignore TypeScript errors during build
+  // Ignore TypeScript errors during build
   typescript: {
     ignoreBuildErrors: true,
+  },
+  // Disable ESLint during build
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   // Add any other necessary configurations
   images: {

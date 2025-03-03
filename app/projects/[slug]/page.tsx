@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Render the project page
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'app/projects/posts', `${slug}.mdx`);
   
